@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .h1 {
+            color: red;
+        }
+
+        .h1Green {
+            color: green;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .userPost {
+            height: 200px;
+            width: 180px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            background-color: rgb(217, 235, 119);
+
+        }
+
+        .container div p {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+
+        .noShow {
+            display: none;
+        }
+
+        .even {
+            background-color: aquamarine;
+        }
+
+        .odd {
+            background-color: burlywood;
+        }
+
+        #serch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: cadetblue;
+        }
+
+        #serchArea {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: rgb(231, 235, 45);
+        }
+
+        #serchArea input {
+            height: 50px;
+            width: 200px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+        <ul>
+            <li v-for="behavior in behaviors">
+                <p>{{behavior}}</p>
+            </li>
+        </ul>
+
+
+    </div>
+
+    <script>
+
+        const { createApp } = Vue
+        createApp({
+            data() {
+                return {
+                    behaviors: [],
+                    scores: 0,
+
+
+                }
+            },
+            mounted() {
+                fetch('./list.json')
+                    .then((response) => response.json())
+                    .then((data) => {
+                        this.behaviors = data;
+                    });
+            },
+            computed: {
+
+
+            },
+            watch: {
+                users() {
+                    console.log(this.users)
+                },
+                serchText() {
+                    if (this.serchText.length > 0)
+                        this.serch()
+                    else
+                        this.serchedUsers = ''
+                }
+
+            },
+            methods: {
+
+                more(e) {
+                    const divMore = e.target.getElementsByTagName('div')[0]
+                    if (divMore.classList.contains('noShow')) {
+                        divMore.classList.remove('noShow')
+                    } else {
+                        divMore.classList.add('noShow')
+                    }
+
+
+                },
+                evenOdd(user) {
+
+                    return (user % 2 == 0)
+                },
+                serch() {
+                    console.log(this.serchText)
+                    fetch('https://dummyjson.com/users/search?q=' + this.serchText + '&limit=0')
+                        .then(res => res.json())
+                        .then((data) => {
+                            this.serchedUsers = data
+                        });
+
+
+                }
+
+            }
+        }).mount('#app')
+
+    </script>
+
+
+
+</body>
+
+</html>
