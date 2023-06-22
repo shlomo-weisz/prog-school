@@ -1,0 +1,50 @@
+{
+    "behavior1":
+    {
+        "name": "lazy",
+        "score": -2,
+        "description": "This person is lazy.",
+        "type": "bad",
+        "id": "behavior1"
+    },
+    "behavior2":
+    {
+        "name": "hardworking",
+        "score": 2,
+        "description": "This person is hardworking.",
+        "type": "good",
+        "id": "behavior2"
+    },
+    "behavior3":
+    {
+        "name": "friendly",
+        "score": 1,
+        "description": "This person is friendly.",
+        "type": "good",
+        "id": "behavior3"
+    },
+    "behavior4":
+    {
+        "name": "unfriendly",
+        "score": -1,
+        "description": "This person is unfriendly.",
+        "type": "bad",
+        "id": "behavior4"
+    },
+    "behavior5":
+    {
+        "name": "honest",
+        "score": 2,
+        "description": "This person is honest.",
+        "type": "good",
+        "id": "behavior5"
+    },
+    "behavior6":
+    {
+        "name": "dishonest",
+        "score": -2,
+        "description": "This person is dishonest.",
+        "type": "bad",
+        "id": "behavior6"
+    }
+}
